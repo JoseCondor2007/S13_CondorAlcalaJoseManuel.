@@ -1,0 +1,44 @@
+<div class="dashboard-layout">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-icon">🎉</span>
+      <div>
+        <h2>EventMaster</h2>
+        <p class="brand-sub">Gestión de Eventos</p>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a routerLink="/inicio" routerLinkActive="active" class="nav-link">
+        <span class="nav-icon">🏠</span> Inicio
+      </a>
+      <a routerLink="/eventos" routerLinkActive="active" class="nav-link">
+        <span class="nav-icon">📅</span> Eventos
+      </a>
+      <a routerLink="/participantes" routerLinkActive="active" class="nav-link">
+        <span class="nav-icon">👥</span> Participantes
+      </a>
+      <a routerLink="/calendario" routerLinkActive="active" class="nav-link">
+        <span class="nav-icon">🗓️</span> Calendario
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-avatar">AD</div>
+      <div>
+        <p class="user-name">Admin Demo</p>
+        <p class="user-role">Administrador</p>
+      </div>
+    </div>
+  </aside>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="main-content">
+    <header class="top-bar">
+      <h1>Panel de Gestión de Eventos</h1>
+      <div class="top-bar-actions">
+        <span class="top-badge">S13 · AP7</span>
+      </div>
+    </header>
+    <router-outlet></router-outlet>
+  </main>
+</div>

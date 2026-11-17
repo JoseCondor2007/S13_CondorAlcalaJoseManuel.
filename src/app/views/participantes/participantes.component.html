@@ -1,0 +1,22 @@
+<p>participantes works!</p>
+<section class="view-header">
+  <h2>Registro de Participantes</h2>
+  <p class="subtitle">Personas inscritas en los eventos</p>
+</section>
+
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>ID</th><th>Nombre</th><th>Email</th><th>Evento</th><th>Tipo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of participantes">
+      <td>#{{ p.id }}</td>
+      <td><strong>{{ p.nombre }}</strong></td>
+      <td>{{ p.email }}</td>
+      <td>{{ p.evento }}</td>
+      <td>{{ p.tipo }}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,17 @@
+<section class="view-header">
+  <h2>Calendario de Eventos</h2>
+  <p class="subtitle">Próximas actividades programadas</p>
+</section>
+
+<div class="calendar-list">
+  <div class="calendar-item" *ngFor="let ev of eventosCalendario" [style.border-left-color]="ev.color">
+    <div class="date-circle" [style.background]="ev.color">
+      <span class="date-day">{{ ev.dia }}</span>
+      <span class="date-month">{{ ev.mes }}</span>
+    </div>
+    <div class="calendar-info">
+      <h4>{{ ev.titulo }}</h4>
+      <p>🕒 {{ ev.hora }}</p>
+    </div>
+  </div>
+</div>

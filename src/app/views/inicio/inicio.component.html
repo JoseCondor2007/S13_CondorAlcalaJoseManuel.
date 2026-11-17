@@ -1,0 +1,30 @@
+<section class="view-header">
+  <h2>Bienvenido a EventMaster</h2>
+  <p class="subtitle">Resumen general de la gestión de eventos</p>
+</section>
+
+<div class="kpi-grid">
+  <div class="kpi-card" *ngFor="let kpi of kpis" [style.border-left-color]="kpi.color">
+    <div class="kpi-icon">{{ kpi.icon }}</div>
+    <div>
+      <p class="kpi-label">{{ kpi.label }}</p>
+      <p class="kpi-value">{{ kpi.value }}</p>
+    </div>
+  </div>
+</div>
+
+<section class="recent-section">
+  <h3>Eventos Recientes</h3>
+  <table class="data-table">
+    <thead>
+      <tr><th>Evento</th><th>Fecha</th><th>Estado</th></tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ev of eventosRecientes">
+        <td>{{ ev.nombre }}</td>
+        <td>{{ ev.fecha }}</td>
+        <td><span class="badge" [class]="ev.estado.toLowerCase()">{{ ev.estado }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</section>

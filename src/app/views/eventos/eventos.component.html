@@ -1,0 +1,22 @@
+<section class="view-header">
+  <h2>Catálogo de Eventos</h2>
+  <p class="subtitle">Listado completo de eventos registrados</p>
+</section>
+
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>ID</th><th>Evento</th><th>Categoría</th><th>Fecha</th><th>Lugar</th><th>Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let ev of eventos">
+      <td>#{{ ev.id }}</td>
+      <td><strong>{{ ev.nombre }}</strong></td>
+      <td>{{ ev.categoria }}</td>
+      <td>{{ ev.fecha }}</td>
+      <td>{{ ev.lugar }}</td>
+      <td><span class="badge" [class]="ev.estado.toLowerCase()">{{ ev.estado }}</span></td>
+    </tr>
+  </tbody>
+</table>
