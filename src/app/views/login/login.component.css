@@ -1,0 +1,70 @@
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  /* Fondo oscuro con un degradado sutil (igual al sidebar) */
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+}
+
+.login-card {
+  background: var(--color-surface);
+  padding: 40px;
+  border-radius: var(--radius);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada para resaltar */
+  width: 100%;
+  max-width: 400px;
+  border-top: 4px solid var(--color-primary);
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+.login-icon { font-size: 36px; }
+.login-header h2 { color: var(--color-text); margin: 8px 0; }
+.login-header p { color: var(--color-text-muted); font-size: 13px; }
+
+.form-group { margin-bottom: 16px; }
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--color-text);
+}
+.form-group input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: #f1f5f9; /* Un tono grisáceo para los inputs como en tu captura */
+}
+.form-group input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  background-color: #fff;
+}
+
+.error-alert {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.btn-login {
+  width: 100%;
+  padding: 12px;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s;
+}
+.btn-login:hover { background: var(--color-primary-dark); }

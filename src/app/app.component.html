@@ -1,5 +1,6 @@
-<div class="dashboard-layout">
-  <!-- SIDEBAR -->
+<!-- Layout del Dashboard (solo si NO estamos en /login) -->
+<div class="dashboard-layout" *ngIf="router.url !== '/login'; else loginView">
+  
   <aside class="sidebar">
     <div class="sidebar-brand">
       <span class="brand-icon">🎉</span>
@@ -9,29 +10,32 @@
       </div>
     </div>
     <nav class="sidebar-nav">
-      <a routerLink="/inicio" routerLinkActive="active" class="nav-link">
-        <span class="nav-icon">🏠</span> Inicio
-      </a>
-      <a routerLink="/eventos" routerLinkActive="active" class="nav-link">
-        <span class="nav-icon">📅</span> Eventos
-      </a>
-      <a routerLink="/participantes" routerLinkActive="active" class="nav-link">
-        <span class="nav-icon">👥</span> Participantes
-      </a>
-      <a routerLink="/calendario" routerLinkActive="active" class="nav-link">
-        <span class="nav-icon">🗓️</span> Calendario
-      </a>
+      <a routerLink="/inicio" routerLinkActive="active" class="nav-link"><span class="nav-icon">🏠</span> Inicio</a>
+      <a routerLink="/eventos" routerLinkActive="active" class="nav-link"><span class="nav-icon">📅</span> Eventos</a>
+      <a routerLink="/participantes" routerLinkActive="active" class="nav-link"><span class="nav-icon">👥</span> Participantes</a>
+      <a routerLink="/calendario" routerLinkActive="active" class="nav-link"><span class="nav-icon">🗓️</span> Calendario</a>
     </nav>
+    
+    <!-- SECCIÓN MODIFICADA: Datos dinámicos del usuario -->
     <div class="sidebar-footer">
-      <div class="user-avatar">AD</div>
-      <div>
-        <p class="user-name">Admin Demo</p>
-        <p class="user-role">Administrador</p>
+      <!-- Avatar dinámico -->
+      <div class="user-avatar">
+        {{ authService.isAdmin() ? 'AD' : 'US' }}
       </div>
+      <div>
+        <!-- Muestra el correo (cortado si es muy largo) -->
+        <p class="user-name" style="font-size: 11px; word-break: break-all;">
+          {{ authService.currentEmail }}
+        </p>
+        <!-- Muestra el rol dinámico -->
+        <p class="user-role">
+          {{ authService.isAdmin() ? 'Administrador' : 'Usuario' }}
+        </p>
+      </div>
+      <button (click)="authService.logout()" class="btn-logout" title="Cerrar Sesión">⏻</button>
     </div>
   </aside>
 
-  <!-- CONTENIDO PRINCIPAL -->
   <main class="main-content">
     <header class="top-bar">
       <h1>Panel de Gestión de Eventos</h1>
@@ -41,4 +45,29 @@
     </header>
     <router-outlet></router-outlet>
   </main>
+</div>
+
+<!-- Vista del Login -->
+<ng-template #loginView>
+  <router-outlet></router-outlet>
+</ng-template>
+
+<!-- MODAL 1: ACCESO RESTRINGIDO -->
+<div class="modal-overlay" *ngIf="authService.showLoginWarning">
+  <div class="modal-box" style="border-top-color: var(--color-danger);">
+    <div class="modal-icon">⚠️</div>
+    <h2>Acceso Restringido</h2>
+    <p>Esta sección es exclusiva para Administradores. Por favor, inicie sesión con una cuenta de Administrador.</p>
+    <button (click)="authService.goToLogin()" class="btn-modal">Ir al Login</button>
+  </div>
+</div>
+
+<!-- MODAL 2: SESIÓN CERRADA -->
+<div class="modal-overlay" *ngIf="authService.showLogoutMessage">
+  <div class="modal-box" style="border-top-color: var(--color-success);">
+    <div class="modal-icon">✅</div>
+    <h2>Sesión Cerrada</h2>
+    <p>Ha cerrado sesión correctamente. Sus datos están seguros.</p>
+    <button (click)="authService.confirmLogout()" class="btn-modal">Volver al Login</button>
+  </div>
 </div>
